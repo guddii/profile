@@ -1,0 +1,62 @@
+@prefix dbo:      <http://dbpedia.org/ontology/> .
+@prefix dbp:      <http://dbpedia.org/property/> .
+@prefix dbr:      <http://dbpedia.org/resource/> .
+@prefix foaf:     <http://xmlns.com/foaf/0.1/> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfa:     <http://www.w3.org/ns/rdfa#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema:   <http://schema.org/> .
+@prefix vcard:    <http://www.w3.org/2006/vcard/ns#> .
+@prefix wikidata: <http://www.wikidata.org/entity/> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix profile:  <https://guddii.github.io/profile/Florian_Gudat#> .
+
+# RDF
+profile:me
+    rdfs:label            "Florian Gudat"@de, "Florian Gudat"@en ;
+    rdfs:comment          "A profile of Florian Gudat" ;
+
+    # vCard
+    rdf:type              vcard:Individual ;
+    vcard:hasEmail        <mailto:florian.gudat@guices.com> ;
+    vcard:fn              "Florian Gudat" ;
+    vcard:hasAddress      [ rdf:type           vcard:Home ;
+                            vcard:country-name "Germany" ;
+                            vcard:locality     "Leipzig" ] ;
+    vcard:nickname        "guddii" ;
+
+
+    # DBpedia
+    rdf:type              dbo:Person ;
+    dbo:alias             "guddii" ;
+    dbo:birthDate         "1988-06-30"^^xsd:date ;
+    dbo:birthPlace        dbr:Mönchengladbach ;
+    dbo:thumbnail         <https://www.gravatar.com/avatar/e3a30f12e2239a2a8c5a08deef9d150b> ;
+    dbp:birthPlace        "Mönchengladbach, Germany"@en, "Mönchengladbach, Deutschland"@de ;
+
+    # Friend of a Friend
+
+    rdf:type              foaf:Person ;
+    foaf:name             "Florian Gudat"@de, "Florian Gudat"@en ;
+
+    # Schema
+    rdf:type              schema:Person ;
+    schema:familyName     "Gudat" ;
+    schema:additionalName "guddii" ;
+    schema:birthDate      "1988-06-30"^^xsd:date ;
+    schema:birthPlace     profile:birthPlace ;
+    schema:givenName      "Florian" ;
+
+    # Wikidata
+    rdf:type              wikidata:Q215627 ;
+.
+
+profile:birthPlace
+    rdf:type       schema:Place ;
+    schema:address profile:PostalAddress ;
+.
+
+profile:PostalAddress
+    rdf:type               schema:PostalAddress ;
+    schema:addressLocality "Leipzig";
+.
